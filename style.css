@@ -1,0 +1,19 @@
+body {
+  font-family: 'Lato', sans-serif;
+  background: url("img/backgroundsea.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+footer {
+  color: #fff;
+  text-align: left;
+}
+
+/*header*/
+
+header {
+  margin: 10px;
+  width: 50%;
+  text-align: center;
+}
