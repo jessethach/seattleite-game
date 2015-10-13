@@ -3,11 +3,31 @@ body {
   background: url("img/backgroundsea.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+@media screen and (max-width: 500px) {
+  body{
+    background: url("img/backgroundsea2.png");
+    background-size: 300px 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  body{
+    background: url("img/backgroundsea2.png");
+    background-size: 500px 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
 }
 
 footer {
   color: #fff;
   text-align: left;
+  width: 100%;
 }
 
 /*header*/
@@ -16,4 +36,42 @@ header {
   margin: 10px;
   width: 50%;
   text-align: center;
+}
+
+/*body*/
+
+main {
+  display: flex;
+  flex-row: wrap;
+  justify-content: space-around;
+}
+
+main img {
+  width: 250px;
+  border: 1.5px solid #000000;
+}
+
+main section aside {
+}
+
+aside p {
+  display: inline-block;;
+}
+
+button {
+  margin: 15px 10px 10px 10px;
+  -webkit-border-radius: 15;
+  -moz-border-radius: 15;
+  border-radius: 15px;
+  color: #ffffff;
+  font-size: 16px;
+  background: #266fa1;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  border-style: none;
+}
+
+button:hover {
+  background: #3cb0fd;
+  text-decoration: none;
 }
