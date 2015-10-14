@@ -42,7 +42,8 @@ var ranImg2 = document.getElementById('img2');
 
 // Store Event
 
-var randomPhoto1, randomPhoto2;
+var randomPhoto1 = randomQuestion();
+var randomPhoto2 = randomQuestion();
 
 function compareImg () {
   do {
@@ -80,28 +81,13 @@ var nextImg2 = document.getElementById('img2');
 //This is a callback function
 nextImg1.addEventListener('click', function() {
     imageArray[randomPhoto1].votes +=1;
-    console.log(imageArray[randomPhoto1].title + " has " + imageArray[randomPhoto1].votes + " votes");
+    console.log(imageArray[randomPhoto1].title + ' has ' + imageArray[randomPhoto1].votes + ' votes');
     compareImg();
 });
 
 nextImg2.addEventListener('click', function() {
     imageArray[randomPhoto2].votes +=1;
-    console.log(imageArray[randomPhoto2].title + " has");
+    console.log(imageArray[randomPhoto2].title + ' has ' + imageArray[randomPhoto1].votes + ' votes');
     compareImg();
 });
-
-
-// function clickTracker() {
-//   var tags = document.getElementsByTagName(nextImg1.src);
-
-//     for(var i=0;i<tags.length;++i)
-//     {
-//       if(tags[i]==clickedElement)
-//       {
-//         arrayWithElements.push({tag:img1.src,index:i});
-//         console.log(arrayWithElements);
-//       }
-//     }
-// }
-
 
