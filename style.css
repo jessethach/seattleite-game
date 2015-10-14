@@ -40,6 +40,10 @@ header {
 
 /*body*/
 
+ul {
+  list-style-type: none;
+}
+
 main {
   display: flex;
   flex-row: wrap;
@@ -51,11 +55,8 @@ main img {
   border: 1.5px solid #000000;
 }
 
-main section aside {
-}
-
-aside p {
-  display: inline-block;;
+main section h4 {
+  text-align: center;
 }
 
 button {

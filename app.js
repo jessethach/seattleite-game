@@ -1,59 +1,107 @@
-//Creating question constructor
+//Empty array for storing images
 
 var imageArray = [];
 
-var seaQuestions = function() {
-  this.src = src;
+//Creating question constructor
+
+var seaQuestions = function(title, src) {
   this.title = title;
-  this.neighbor = neighbor;
+  this.src = src;
+  imageArray.push(this);
+  this.votes = 0;
+};
 
-  function askQuestions(img, name, movie) {
-    var sea = new seaQuestions(img, name, movie);
-    imageArray.push(sea);
-  }
-}
+//Call constructor function with all of the objects that have images
+
+var alki = new seaQuestions('Alki Beach', 'img/qimg/alki.jpg');
+var ballard = new seaQuestions('Ballard', 'img/qimg/ballard.jpg');
+var chief = new seaQuestions('Seattle Center', 'img/qimg/chief.jpg');
+var columbia = new seaQuestions('Columbia City', 'img/qimg/columbia.jpg');
+var downtown = new seaQuestions('Downtown', 'img/qimg/downtown.jpg');
+var fremont = new seaQuestions('Fremont', 'img/qimg/fremont.jpg');
+var capHill = new seaQuestions('Capitol Hill', 'img/qimg/jimmy.jpg');
+var arboretum = new seaQuestions('Arboretum', 'img/qimg/arboretum.jpg');
+var magnolia = new seaQuestions('Magnolia', 'img/qimg/magnolia.jpg');
+var pioneer = new seaQuestions('Pioneer Square', 'img/qimg/pioneersq.jpg');
+var queen = new seaQuestions('Queen Anne', 'img/qimg/queen.jpg');
+var sodo = new seaQuestions('Pioneer Square', 'img/qimg/sodo.jpg');
+var udistrict = new seaQuestions('U District', 'img/qimg/udistrict.jpg');
+var volunteer = new seaQuestions('Volunteer Park', 'img/qimg/volunteer.jpg');
+
+//Generate random number and assign to imageArray
+
+var randomQuestion = function() {
+    return Math.floor(Math.random() * imageArray.length );
+};
+
+// var compare = document.getElementById('compare');
+var title1 = document.getElementById('title1');
+var title2 = document.getElementById('title2');
+var ranImg1 = document.getElementById('img1');
+var ranImg2 = document.getElementById('img2');
+
+// Store Event
+
+var randomPhoto1, randomPhoto2;
+
+function compareImg () {
+  do {
+    var randomPhoto1 = randomQuestion();
+    var randomPhoto2 = randomQuestion();
+
+    //Find a way to push the number of times
+
+    title1.textContent = imageArray[randomPhoto1].title;
+    title2.textContent = imageArray[randomPhoto2].title;
+
+    ranImg1.src = imageArray[randomPhoto1].src;
+    ranImg2.src = imageArray[randomPhoto2].src;
+
+  } while (randomPhoto1 === randomPhoto2);
+    console.log('Did a while loop');
+
+};
+
+//Call compareImg event
+
+compareImg();
+
+//Get img1 and img2 element from HTML
+
+var nextImg1 = document.getElementById('img1');
+var nextImg2 = document.getElementById('img2');
+
+//Add event listener that reruns the compareImg function
+
+// nextImg1.addEventListener('click', compareImg);
+// nextImg2.addEventListener('click', compareImg);
 
 
-function randomImg () {
-  var random = randomNumber();
-  var randomPhoto = (imageArray[random]);
-  //populating the DOM with an image
-  document.getElementsByTagName('').src =randomPhoto1["src"];
-  var title1 document.getElementById("photoName");
-  title1.appendChild(document.createTextNode(randomPhoto1["title"]));
-  var neighbor.appendChild(document.createTextNode(randomPhoto1["neighbor"]));
-  neighbor.appendChild(document.createTextNode(randomPhoto1["neighbor"]));
-}
+//This is a callback function
+nextImg1.addEventListener('click', function() {
+    imageArray[randomPhoto1].votes +=1;
+    console.log(imageArray[randomPhoto1].title + " has " + imageArray[randomPhoto1].votes + " votes");
+    compareImg();
+});
 
-// Hard wired answers
+nextImg2.addEventListener('click', function() {
+    imageArray[randomPhoto2].votes +=1;
+    console.log(imageArray[randomPhoto2].title + " has");
+    compareImg();
+});
 
-for(var i = 0; i < 2; i++) {
-  randomImg(i);
-  //duplicate photo error correction
-}
 
-var randNum = function () {
-  return Math.floor(Math.random()) * );
-}
+// function clickTracker() {
+//   var tags = document.getElementsByTagName(nextImg1.src);
 
-//Store Event
-var answerSubmit = function(e) {
-  e.preventDefault();
-
-  //Collect number of yes clicks ascoiated with 'yes' and 'no'
-  if (yesAnswer) {
-    yesAnswers++,
-  }
-  //Collect number of no clicks
-  else if (noAnswers) {
-    noAnswers++,
-  }
-
-  //Run a for loop to restart code in event
-  for (number of photos in an array, run this code){
-
-  }
-
-}
+//     for(var i=0;i<tags.length;++i)
+//     {
+//       if(tags[i]==clickedElement)
+//       {
+//         arrayWithElements.push({tag:img1.src,index:i});
+//         console.log(arrayWithElements);
+//       }
+//     }
+// }
 
 
