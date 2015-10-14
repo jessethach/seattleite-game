@@ -85,3 +85,40 @@ nextImg2.addEventListener('click', function() {
     compareImg();
 });
 
+var data = [
+  {
+    value: 25,
+    label: 'Alex',
+    color: 'green',
+    highlight: 'blue'
+  },
+
+  {
+    value: 30,
+    label: 'Charles',
+    color: 'black',
+    highlight: 'white'
+  },
+
+  {
+    value: 10,
+    label: 'Tim',
+    color: 'red',
+    highlight: 'pink'
+  },
+
+  {
+    value: 5,
+    label: 'Joe',
+    color: 'white',
+    highlight: 'black'
+  }
+];
+
+var context = document.getElementById('neighborhoods').getContext('2d');
+var skillsChart = new Chart(context).Doughnut(data, {
+  animationSteps : 200,
+  animationEasing : "eastOutBounce",
+  animateRotate : true,
+  animateScale : true
+});
