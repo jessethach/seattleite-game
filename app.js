@@ -4,34 +4,34 @@ var imageArray = [];
 
 //Creating question constructor
 
-var seaQuestions = function(title, src) {
-  this.title = title;
-  this.src = src;
-  imageArray.push(this);
+var seaQuestions = function(neighb, pics) {
+  this.neighb = neighb;
+  this.pics = pics;
   this.votes = 0;
+  imageArray.push(this);
 };
 
 //Call constructor function with all of the objects that have images
 
-var alki = new seaQuestions('Alki Beach', 'img/qimg/alki.jpg');
-var ballard = new seaQuestions('Ballard', 'img/qimg/ballard.jpg');
-var chief = new seaQuestions('Seattle Center', 'img/qimg/chief.jpg');
-var columbia = new seaQuestions('Columbia City', 'img/qimg/columbia.jpg');
-var downtown = new seaQuestions('Downtown', 'img/qimg/downtown.jpg');
-var fremont = new seaQuestions('Fremont', 'img/qimg/fremont.jpg');
-var capHill = new seaQuestions('Capitol Hill', 'img/qimg/jimmy.jpg');
-var arboretum = new seaQuestions('Arboretum', 'img/qimg/arboretum.jpg');
-var magnolia = new seaQuestions('Magnolia', 'img/qimg/magnolia.jpg');
-var pioneer = new seaQuestions('Pioneer Square', 'img/qimg/pioneersq.jpg');
-var queen = new seaQuestions('Queen Anne', 'img/qimg/queen.jpg');
-var sodo = new seaQuestions('Pioneer Square', 'img/qimg/sodo.jpg');
-var udistrict = new seaQuestions('U District', 'img/qimg/udistrict.jpg');
-var volunteer = new seaQuestions('Volunteer Park', 'img/qimg/volunteer.jpg');
+var alki = new seaQuestions('Alki Beach', 'img/alki.jpg');
+var ballard = new seaQuestions('Ballard', 'img/ballard.jpg');
+var chief = new seaQuestions('Seattle Center', 'img/chief.jpg');
+var columbia = new seaQuestions('Columbia City', 'img/columbia.jpg');
+var downtown = new seaQuestions('Downtown', 'img/downtown.jpg');
+var fremont = new seaQuestions('Fremont', 'img/fremont.jpg');
+var capHill = new seaQuestions('Capitol Hill', 'img/jimmy.jpg');
+var arboretum = new seaQuestions('Arboretum', 'img/arboretum.jpg');
+var magnolia = new seaQuestions('Magnolia', 'img/magnolia.jpg');
+var pioneer = new seaQuestions('Pioneer Square', 'img/pioneersq.jpg');
+var queen = new seaQuestions('Queen Anne', 'img/queen.jpg');
+var sodo = new seaQuestions('Pioneer Square', 'img/sodo.jpg');
+var udistrict = new seaQuestions('U District', 'img/udistrict.jpg');
+var volunteer = new seaQuestions('Volunteer Park', 'img/volunteer.jpg');
 
 //Generate random number and assign to imageArray
 
 var randomQuestion = function() {
-    return Math.floor(Math.random() * imageArray.length );
+  return Math.floor(Math.random() * imageArray.length );
 };
 
 // var compare = document.getElementById('compare');
@@ -42,38 +42,22 @@ var ranImg2 = document.getElementById('img2');
 
 // Store Event inside of the function
 
-// var randomPhoto1 = randomQuestion();
-// var randomPhoto2 = randomQuestion();
+var randomPhoto1, randomPhoto2;
 
 function compareImg () {
+ do {
     var randomPhoto1 = randomQuestion();
     var randomPhoto2 = randomQuestion();
 
     //Find a way to push the number of times
 
-    title1.textContent = imageArray[randomPhoto1].title;
-    title2.textContent = imageArray[randomPhoto2].title;
+    title1.textContent = imageArray[randomPhoto1].neighb;
+    title2.textContent = imageArray[randomPhoto2].neighb;
 
-    ranImg1.src = imageArray[randomPhoto1].src;
-    ranImg2.src = imageArray[randomPhoto2].src;
-
-
-    //Get img1 and img2 element from HTML
-    var nextImg1 = document.getElementById('img1');
-    var nextImg2 = document.getElementById('img2');
-
-    //This is a callback function
-    nextImg1.addEventListener('click', function() {
-        imageArray[randomPhoto1].votes +=1;
-        console.log(imageArray[randomPhoto1].title + ' has ' + imageArray[randomPhoto1].votes + ' votes');
-        compareImg();
-    });
-
-    nextImg2.addEventListener('click', function() {
-        imageArray[randomPhoto2].votes +=1;
-        console.log(imageArray[randomPhoto2].title + ' has ' + imageArray[randomPhoto1].votes + ' votes');
-        compareImg();
-    });
+    ranImg1.src = imageArray[randomPhoto1].pics;
+    ranImg2.src = imageArray[randomPhoto2].pics;
+  }
+  while (randomPhoto1 === randomPhoto2);
 };
 
 
@@ -82,11 +66,22 @@ function compareImg () {
 compareImg();
 
 
-//Add event listener that reruns the compareImg function
+//Get img1 and img2 element from HTML
+var nextImg1 = document.getElementById('img1');
+var nextImg2 = document.getElementById('img2');
 
-// nextImg1.addEventListener('click', compareImg);
-// nextImg2.addEventListener('click', compareImg);
+//This is a callback function
+nextImg1.addEventListener('click', function() {
+    console.log('left image was clicked');
+    imageArray[randomPhoto1].votes += 1;
+    console.log(imageArray[randomPhoto1].neighb + ' has ' + imageArray[randomPhoto1].votes + ' votes');
+    compareImg();
+});
 
-
-
+nextImg2.addEventListener('click', function() {
+    console.log('right image was clicked');
+    imageArray[randomPhoto2].votes += 1;
+    console.log(imageArray[randomPhoto2].neighb + ' has ' + imageArray[randomPhoto2].votes + ' votes');
+    compareImg();
+});
 
