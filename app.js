@@ -46,8 +46,8 @@ var randomPhoto1, randomPhoto2;
 
 function compareImg () {
  do {
-    var randomPhoto1 = randomQuestion();
-    var randomPhoto2 = randomQuestion();
+    randomPhoto1 = randomQuestion();
+    randomPhoto2 = randomQuestion();
 
     //Find a way to push the number of times
 
@@ -56,7 +56,7 @@ function compareImg () {
 
     ranImg1.src = imageArray[randomPhoto1].pics;
     ranImg2.src = imageArray[randomPhoto2].pics;
-  }
+    }
   while (randomPhoto1 === randomPhoto2);
 };
 

@@ -34,7 +34,7 @@ footer {
 
 header {
   margin: 10px;
-  width: 50%;
+  width: 100%;
   text-align: center;
 }
 
@@ -46,8 +46,9 @@ ul {
 
 main {
   display: flex;
-  flex-row: wrap;
-  justify-content: space-around;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 main img {
