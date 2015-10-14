@@ -40,13 +40,12 @@ var title2 = document.getElementById('title2');
 var ranImg1 = document.getElementById('img1');
 var ranImg2 = document.getElementById('img2');
 
-// Store Event
+// Store Event inside of the function
 
-var randomPhoto1 = randomQuestion();
-var randomPhoto2 = randomQuestion();
+// var randomPhoto1 = randomQuestion();
+// var randomPhoto2 = randomQuestion();
 
 function compareImg () {
-  do {
     var randomPhoto1 = randomQuestion();
     var randomPhoto2 = randomQuestion();
 
@@ -58,19 +57,30 @@ function compareImg () {
     ranImg1.src = imageArray[randomPhoto1].src;
     ranImg2.src = imageArray[randomPhoto2].src;
 
-  } while (randomPhoto1 === randomPhoto2);
-    console.log('Did a while loop');
 
+    //Get img1 and img2 element from HTML
+    var nextImg1 = document.getElementById('img1');
+    var nextImg2 = document.getElementById('img2');
+
+    //This is a callback function
+    nextImg1.addEventListener('click', function() {
+        imageArray[randomPhoto1].votes +=1;
+        console.log(imageArray[randomPhoto1].title + ' has ' + imageArray[randomPhoto1].votes + ' votes');
+        compareImg();
+    });
+
+    nextImg2.addEventListener('click', function() {
+        imageArray[randomPhoto2].votes +=1;
+        console.log(imageArray[randomPhoto2].title + ' has ' + imageArray[randomPhoto1].votes + ' votes');
+        compareImg();
+    });
 };
+
 
 //Call compareImg event
 
 compareImg();
 
-//Get img1 and img2 element from HTML
-
-var nextImg1 = document.getElementById('img1');
-var nextImg2 = document.getElementById('img2');
 
 //Add event listener that reruns the compareImg function
 
@@ -78,16 +88,5 @@ var nextImg2 = document.getElementById('img2');
 // nextImg2.addEventListener('click', compareImg);
 
 
-//This is a callback function
-nextImg1.addEventListener('click', function() {
-    imageArray[randomPhoto1].votes +=1;
-    console.log(imageArray[randomPhoto1].title + ' has ' + imageArray[randomPhoto1].votes + ' votes');
-    compareImg();
-});
 
-nextImg2.addEventListener('click', function() {
-    imageArray[randomPhoto2].votes +=1;
-    console.log(imageArray[randomPhoto2].title + ' has ' + imageArray[randomPhoto1].votes + ' votes');
-    compareImg();
-});
 
