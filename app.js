@@ -33,7 +33,7 @@ var volunteer = new seaQuestions('Volunteer Park', 'img/volunteer.jpg', 'Volunte
 
 //Generate random number and assign to imageArray
 
-var randomQuestion = function() {
+function randomQuestion () {
   return Math.floor(Math.random() * imageArray.length );
 };
 
@@ -61,11 +61,9 @@ function compareImg () {
   } while (randomPhoto1 === randomPhoto2)
 };
 
-
 //Call compareImg event
 
 compareImg();
-
 
 //Get img1 and img2 element from HTML
 var nextImg1 = document.getElementById('img1');
@@ -76,6 +74,7 @@ nextImg1.addEventListener('click', function() {
     console.log('left image was clicked');
     imageArray[randomPhoto1].value += 1;
     console.log(imageArray[randomPhoto1].neighb + ' has ' + imageArray[randomPhoto1].value + ' value');
+    storedNeighb();
     compareImg();
     chartMaker();
 });
@@ -84,9 +83,15 @@ nextImg2.addEventListener('click', function() {
     console.log('right image was clicked');
     imageArray[randomPhoto2].value += 1;
     console.log(imageArray[randomPhoto2].neighb + ' has ' + imageArray[randomPhoto2].value + ' value');
+    storedNeighb();
     compareImg();
     chartMaker();
 });
+
+//Call chartmaker and getstg
+
+getStg();
+chartMaker();
 
 //chartMaker function created
 
@@ -98,6 +103,25 @@ var compareChart = new Chart(context).Doughnut(imageArray, {
   animateRotate : true,
   animateScale : true
 });
+};
+
+//Create the local storage function with a for loop so that if local storage exists, run code to grab localstorage
+
+function storedNeighb () {
+  var storedVote = JSON.stringify(imageArray);
+  for (var i = 0; i < imageArray.length; i++) {
+   if (imageArray[i].vote !== 0) {
+    localStorage.setItem('neighborhoods', storedVote);
+    };
+  }
 }
 
-// chartMaker();
+//Create functions to get local storage
+
+function getStg () {
+  if (localStorage.getItem('neighborhoods')) {
+  var storedVote = localStorage.getItem('neighborhoods');
+  getStored = JSON.parse(storedVote);
+  imageArray = getStored;
+  };
+}
