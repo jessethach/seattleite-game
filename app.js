@@ -4,29 +4,32 @@ var imageArray = [];
 
 //Creating question constructor
 
-var seaQuestions = function(neighb, pics) {
+var seaQuestions = function(neighb, pics, label, color, highlight, value) {
   this.neighb = neighb;
   this.pics = pics;
-  this.votes = 0;
+  this.label = label;
+  this.color = "#F7464A";
+  this.highlight = "#FF5A5E";
+  this.value = 0;
   imageArray.push(this);
 };
 
 //Call constructor function with all of the objects that have images
 
-var alki = new seaQuestions('Alki Beach', 'img/alki.jpg');
-var ballard = new seaQuestions('Ballard', 'img/ballard.jpg');
-var chief = new seaQuestions('Seattle Center', 'img/chief.jpg');
-var columbia = new seaQuestions('Columbia City', 'img/columbia.jpg');
-var downtown = new seaQuestions('Downtown', 'img/downtown.jpg');
-var fremont = new seaQuestions('Fremont', 'img/fremont.jpg');
-var capHill = new seaQuestions('Capitol Hill', 'img/jimmy.jpg');
-var arboretum = new seaQuestions('Arboretum', 'img/arboretum.jpg');
-var magnolia = new seaQuestions('Magnolia', 'img/magnolia.jpg');
-var pioneer = new seaQuestions('Pioneer Square', 'img/pioneersq.jpg');
-var queen = new seaQuestions('Queen Anne', 'img/queen.jpg');
-var sodo = new seaQuestions('Pioneer Square', 'img/sodo.jpg');
-var udistrict = new seaQuestions('U District', 'img/udistrict.jpg');
-var volunteer = new seaQuestions('Volunteer Park', 'img/volunteer.jpg');
+var alki = new seaQuestions('Alki Beach', 'img/alki.jpg', 'Alki');
+var ballard = new seaQuestions('Ballard', 'img/ballard.jpg', 'Ballard');
+var chief = new seaQuestions('Seattle Center', 'img/chief.jpg', 'Seattle Center');
+var columbia = new seaQuestions('Columbia City', 'img/columbia.jpg', 'Columbia City');
+var downtown = new seaQuestions('Downtown', 'img/downtown.jpg', 'Downtown');
+var fremont = new seaQuestions('Fremont', 'img/fremont.jpg', 'Fremont');
+var capHill = new seaQuestions('Capitol Hill', 'img/jimmy.jpg', 'Capitol Hill');
+var arboretum = new seaQuestions('Arboretum', 'img/arboretum.jpg', 'Arboretum');
+var magnolia = new seaQuestions('Magnolia', 'img/magnolia.jpg', 'Magnolia');
+var pioneer = new seaQuestions('Pioneer Square', 'img/pioneersq.jpg', 'Pioneer Square');
+var queen = new seaQuestions('Queen Anne', 'img/queen.jpg', 'Queen Anne');
+var sodo = new seaQuestions('Pioneer Square', 'img/sodo.jpg', 'Pioneer Square');
+var udistrict = new seaQuestions('U District', 'img/udistrict.jpg', 'U District');
+var volunteer = new seaQuestions('Volunteer Park', 'img/volunteer.jpg', 'Volunteer Park');
 
 //Generate random number and assign to imageArray
 
@@ -48,7 +51,6 @@ function compareImg () {
  do {
     randomPhoto1 = randomQuestion();
     randomPhoto2 = randomQuestion();
-
     //Find a way to push the number of times
 
     title1.textContent = imageArray[randomPhoto1].neighb;
@@ -56,9 +58,8 @@ function compareImg () {
 
     ranImg1.src = imageArray[randomPhoto1].pics;
     ranImg2.src = imageArray[randomPhoto2].pics;
-    }
-  while (randomPhoto1 === randomPhoto2);
-};
+  } while (randomPhoto1 === randomPhoto2)
+    };
 
 
 //Call compareImg event
@@ -73,52 +74,26 @@ var nextImg2 = document.getElementById('img2');
 //This is a callback function
 nextImg1.addEventListener('click', function() {
     console.log('left image was clicked');
-    imageArray[randomPhoto1].votes += 1;
-    console.log(imageArray[randomPhoto1].neighb + ' has ' + imageArray[randomPhoto1].votes + ' votes');
+    imageArray[randomPhoto1].value += 1;
+    console.log(imageArray[randomPhoto1].neighb + ' has ' + imageArray[randomPhoto1].value + ' value');
     compareImg();
+    chartMaker();
 });
 
 nextImg2.addEventListener('click', function() {
     console.log('right image was clicked');
-    imageArray[randomPhoto2].votes += 1;
-    console.log(imageArray[randomPhoto2].neighb + ' has ' + imageArray[randomPhoto2].votes + ' votes');
+    imageArray[randomPhoto2].value += 1;
+    console.log(imageArray[randomPhoto2].neighb + ' has ' + imageArray[randomPhoto2].value + ' value');
     compareImg();
+    chartMaker();
 });
 
-var data = [
-  {
-    value: 25,
-    label: 'Alex',
-    color: 'green',
-    highlight: 'blue'
-  },
-
-  {
-    value: 30,
-    label: 'Charles',
-    color: 'black',
-    highlight: 'white'
-  },
-
-  {
-    value: 10,
-    label: 'Tim',
-    color: 'red',
-    highlight: 'pink'
-  },
-
-  {
-    value: 5,
-    label: 'Joe',
-    color: 'white',
-    highlight: 'black'
-  }
-];
-
+function chartMaker () {
 var context = document.getElementById('neighborhoods').getContext('2d');
-var skillsChart = new Chart(context).Doughnut(data, {
-  animationSteps : 200,
+var compareChart = new Chart(context).Doughnut(imageArray, {
+  animationSteps : 100,
   animationEasing : "eastOutBounce",
   animateRotate : true,
   animateScale : true
 });
+}
