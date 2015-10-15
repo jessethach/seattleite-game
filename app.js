@@ -8,28 +8,28 @@ var seaQuestions = function(neighb, pics, label, color, highlight, value) {
   this.neighb = neighb;
   this.pics = pics;
   this.label = label;
-  this.color = "#F7464A";
-  this.highlight = "#FF5A5E";
+  this.color = color;
+  this.highlight = highlight;
   this.value = 0;
   imageArray.push(this);
 };
 
 //Call constructor function with all of the objects that have images
 
-var alki = new seaQuestions('Alki Beach', 'img/alki.jpg', 'Alki');
-var ballard = new seaQuestions('Ballard', 'img/ballard.jpg', 'Ballard');
-var chief = new seaQuestions('Seattle Center', 'img/chief.jpg', 'Seattle Center');
-var columbia = new seaQuestions('Columbia City', 'img/columbia.jpg', 'Columbia City');
-var downtown = new seaQuestions('Downtown', 'img/downtown.jpg', 'Downtown');
-var fremont = new seaQuestions('Fremont', 'img/fremont.jpg', 'Fremont');
-var capHill = new seaQuestions('Capitol Hill', 'img/jimmy.jpg', 'Capitol Hill');
-var arboretum = new seaQuestions('Arboretum', 'img/arboretum.jpg', 'Arboretum');
-var magnolia = new seaQuestions('Magnolia', 'img/magnolia.jpg', 'Magnolia');
-var pioneer = new seaQuestions('Pioneer Square', 'img/pioneersq.jpg', 'Pioneer Square');
-var queen = new seaQuestions('Queen Anne', 'img/queen.jpg', 'Queen Anne');
-var sodo = new seaQuestions('Pioneer Square', 'img/sodo.jpg', 'Pioneer Square');
-var udistrict = new seaQuestions('U District', 'img/udistrict.jpg', 'U District');
-var volunteer = new seaQuestions('Volunteer Park', 'img/volunteer.jpg', 'Volunteer Park');
+var alki = new seaQuestions('Alki Beach', 'img/alki.jpg', 'Alki', '#B26812', '#5C6812');
+var ballard = new seaQuestions('Ballard', 'img/ballard.jpg', 'Ballard', '#1987FF', '#8787FF');
+var chief = new seaQuestions('Seattle Center', 'img/chief.jpg', 'Seattle Center', '#D0FF00', '#C98A00');
+var columbia = new seaQuestions('Columbia City', 'img/columbia.jpg', 'Columbia City', '#832463', '#835063');
+var downtown = new seaQuestions('Downtown', 'img/downtown.jpg', 'Downtown', '#785B96', '#BDB38E');
+var fremont = new seaQuestions('Fremont', 'img/fremont.jpg', 'Fremont', '#004358', '#1F8A70');
+var capHill = new seaQuestions('Capitol Hill', 'img/jimmy.jpg', 'Capitol Hill', '#BEDB39', '#FD7400');
+var arboretum = new seaQuestions('Arboretum', 'img/arboretum.jpg', 'Arboretum', '#73993F', '#4865B2');
+var magnolia = new seaQuestions('Magnolia', 'img/magnolia.jpg', 'Magnolia', '#4C1B1B', '#B9121B');
+var pioneer = new seaQuestions('Pioneer Square', 'img/pioneersq.jpg', 'Pioneer Square', '#F6E497', '#FCFAE1');
+var queen = new seaQuestions('Queen Anne', 'img/queen.jpg', 'Queen Anne', '#BD8D46', '#BA9E63');
+var sodo = new seaQuestions('Pioneer Square', 'img/sodo.jpg', 'Pioneer Square', '#EA2E49', '#EA6749');
+var udistrict = new seaQuestions('U District', 'img/udistrict.jpg', 'U District', '#333745', '#1D3745');
+var volunteer = new seaQuestions('Volunteer Park', 'img/volunteer.jpg', 'Volunteer Park', '#F6F792', '#7A7A48');
 
 //Generate random number and assign to imageArray
 
@@ -71,7 +71,7 @@ compareImg();
 var nextImg1 = document.getElementById('img1');
 var nextImg2 = document.getElementById('img2');
 
-//This is a callback function
+//This is a callback function that also calls the chartMaker function
 nextImg1.addEventListener('click', function() {
     console.log('left image was clicked');
     imageArray[randomPhoto1].value += 1;
@@ -88,10 +88,12 @@ nextImg2.addEventListener('click', function() {
     chartMaker();
 });
 
+//chartMaker function created
+
 function chartMaker () {
 var context = document.getElementById('neighborhoods').getContext('2d');
 var compareChart = new Chart(context).Doughnut(imageArray, {
-  animationSteps : 100,
+  animationSteps : 50,
   animationEasing : "eastOutBounce",
   animateRotate : true,
   animateScale : true
