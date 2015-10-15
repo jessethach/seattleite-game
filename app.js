@@ -27,7 +27,7 @@ var arboretum = new seaQuestions('Arboretum', 'img/arboretum.jpg', 'Arboretum', 
 var magnolia = new seaQuestions('Magnolia', 'img/magnolia.jpg', 'Magnolia', '#4C1B1B', '#B9121B');
 var pioneer = new seaQuestions('Pioneer Square', 'img/pioneersq.jpg', 'Pioneer Square', '#F6E497', '#FCFAE1');
 var queen = new seaQuestions('Queen Anne', 'img/queen.jpg', 'Queen Anne', '#BD8D46', '#BA9E63');
-var sodo = new seaQuestions('Pioneer Square', 'img/sodo.jpg', 'Pioneer Square', '#EA2E49', '#EA6749');
+var sodo = new seaQuestions('Sodo', 'img/sodo.jpg', 'Pioneer Square', '#EA2E49', '#EA6749');
 var udistrict = new seaQuestions('U District', 'img/udistrict.jpg', 'U District', '#333745', '#1D3745');
 var volunteer = new seaQuestions('Volunteer Park', 'img/volunteer.jpg', 'Volunteer Park', '#F6F792', '#7A7A48');
 
@@ -59,7 +59,7 @@ function compareImg () {
     ranImg1.src = imageArray[randomPhoto1].pics;
     ranImg2.src = imageArray[randomPhoto2].pics;
   } while (randomPhoto1 === randomPhoto2)
-    };
+};
 
 
 //Call compareImg event
@@ -99,3 +99,5 @@ var compareChart = new Chart(context).Doughnut(imageArray, {
   animateScale : true
 });
 }
+
+// chartMaker();
