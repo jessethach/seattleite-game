@@ -69,7 +69,7 @@ compareImg();
 var nextImg1 = document.getElementById('img1');
 var nextImg2 = document.getElementById('img2');
 
-//This is a callback function that also calls the chartMaker function
+//These are callback functions that also calls the chartMaker, storedNeighb, and getStg functions
 nextImg1.addEventListener('click', function() {
     console.log('left image was clicked');
     imageArray[randomPhoto1].value += 1;
