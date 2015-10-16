@@ -88,11 +88,6 @@ nextImg2.addEventListener('click', function() {
     chartMaker();
 });
 
-//Call chartmaker and getstg
-
-getStg();
-chartMaker();
-
 //chartMaker function created
 
 function chartMaker () {
@@ -110,13 +105,13 @@ var compareChart = new Chart(context).Doughnut(imageArray, {
 function storedNeighb () {
   var storedVote = JSON.stringify(imageArray);
   for (var i = 0; i < imageArray.length; i++) {
-   if (imageArray[i].vote !== 0) {
+   if (imageArray[i] !== 0) {
     localStorage.setItem('neighborhoods', storedVote);
     };
   }
 }
 
-//Create functions to get local storage
+//Create function to get local storage
 
 function getStg () {
   if (localStorage.getItem('neighborhoods')) {
@@ -125,3 +120,8 @@ function getStg () {
   imageArray = getStored;
   };
 }
+
+//Call chartmaker and getstg
+
+getStg();
+chartMaker();
